@@ -1,9 +1,9 @@
-package mr.cell.kotlinpetclinic.mongodb.pets
+package mr.cell.kotlinpetclinic.db.pets
 
 import mr.cell.kotlinpetclinic.core.pets.Pet
 import mr.cell.kotlinpetclinic.core.pets.PetNotFoundException
 import mr.cell.kotlinpetclinic.core.pets.PetsRepository
-import mr.cell.kotlinpetclinic.mongodb.owners.MongoOwnersRepositoryAdapter
+import mr.cell.kotlinpetclinic.db.owners.MongoOwnersRepositoryAdapter
 import org.springframework.stereotype.Component
 
 @Component

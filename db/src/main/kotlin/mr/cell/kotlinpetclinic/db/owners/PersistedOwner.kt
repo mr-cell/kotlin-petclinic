@@ -1,4 +1,4 @@
-package mr.cell.kotlinpetclinic.mongodb.owners
+package mr.cell.kotlinpetclinic.db.owners
 
 import mr.cell.kotlinpetclinic.core.owners.Owner
 import org.springframework.data.annotation.Id

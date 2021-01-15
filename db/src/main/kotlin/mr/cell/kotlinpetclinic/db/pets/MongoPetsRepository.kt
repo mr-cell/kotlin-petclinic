@@ -1,4 +1,4 @@
-package mr.cell.kotlinpetclinic.mongodb.pets
+package mr.cell.kotlinpetclinic.db.pets
 
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
