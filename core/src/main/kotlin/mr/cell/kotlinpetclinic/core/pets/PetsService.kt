@@ -2,9 +2,7 @@ package mr.cell.kotlinpetclinic.core.pets
 
 import mr.cell.kotlinpetclinic.core.owners.Owner
 import mr.cell.kotlinpetclinic.core.owners.OwnersRepository
-import org.springframework.stereotype.Service
 
-@Service
 class PetsService(val pets: PetsRepository, val owners: OwnersRepository) {
 
     fun getPets(): Collection<Pet> {

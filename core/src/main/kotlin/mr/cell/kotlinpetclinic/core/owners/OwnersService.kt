@@ -1,8 +1,5 @@
 package mr.cell.kotlinpetclinic.core.owners
 
-import org.springframework.stereotype.Service
-
-@Service
 class OwnersService(private val ownersRepository: OwnersRepository) {
 
     fun getOwners(): Collection<Owner> {
