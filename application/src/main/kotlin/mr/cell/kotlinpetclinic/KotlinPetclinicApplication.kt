@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class KotlinPetstoreApplication
+class KotlinPetclinicApplication
 
 fun main(args: Array<String>) {
-	runApplication<KotlinPetstoreApplication>(*args)
+	runApplication<KotlinPetclinicApplication>(*args)
 }

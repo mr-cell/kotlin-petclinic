@@ -1,47 +1,49 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.4.1"
-	id("io.spring.dependency-management") version "1.0.10.RELEASE"
-	kotlin("jvm") version "1.4.21"
-	kotlin("plugin.spring") version "1.4.21"
+    id("org.springframework.boot") version "2.4.1"
+    id("io.spring.dependency-management") version "1.0.10.RELEASE"
+    id("com.gorylenko.gradle-git-properties") version "2.2.4"
+    kotlin("jvm") version "1.4.21"
+    kotlin("plugin.spring") version "1.4.21"
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_15
 
 allprojects {
-	group = "mr.cell"
-	version = "0.0.1-SNAPSHOT"
+    group = "mr.cell"
+    version = "0.0.1-SNAPSHOT"
 }
 
 subprojects {
-	apply {
-		plugin("org.springframework.boot")
-		plugin("io.spring.dependency-management")
-		plugin("org.jetbrains.kotlin.jvm")
-		plugin("org.jetbrains.kotlin.plugin.spring")
-	}
+    apply {
+        plugin("org.springframework.boot")
+        plugin("io.spring.dependency-management")
+        plugin("com.gorylenko.gradle-git-properties")
+        plugin("org.jetbrains.kotlin.jvm")
+        plugin("org.jetbrains.kotlin.plugin.spring")
+    }
 
-	repositories {
-		mavenCentral()
-	}
+    repositories {
+        mavenCentral()
+    }
 
-	tasks.withType<KotlinCompile> {
-		kotlinOptions {
-			freeCompilerArgs = listOf("-Xjsr305=strict")
-			jvmTarget = "15"
-		}
-	}
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "15"
+        }
+    }
 
-	tasks.withType<Test> {
-		useJUnitPlatform()
-	}
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 tasks.bootJar {
-	enabled = false
+    enabled = false
 }
