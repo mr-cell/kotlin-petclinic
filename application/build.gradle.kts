@@ -1,3 +1,5 @@
+val archUnitVersion: String by ext
+
 dependencies {
     implementation(project(":core"))
     implementation(project(":http"))
@@ -10,6 +12,7 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("com.tngtech.archunit:archunit:${archUnitVersion}")
 }
 
 tasks.bootJar {

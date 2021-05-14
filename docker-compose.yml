@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+   mongo:
+     restart: always
+     image: mongo:4.4.6-bionic
+     container_name: petclinic-mongo
+   mongoexpress:
+     restart: always
+     image: mongo-express:0.54.0
+     depends_on:
+       - mongo
+     ports:
+     - 8081:8081
+   petclinic:
+     build:
+       context: .
+     image: kotlin-petclinic
+     restart: always
+     ports:
+     - 8080:8080
+

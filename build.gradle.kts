@@ -16,6 +16,10 @@ allprojects {
 }
 
 subprojects {
+    ext {
+        set("archUnitVersion", "0.15.0")
+    }
+
     apply {
         plugin("org.springframework.boot")
         plugin("io.spring.dependency-management")
