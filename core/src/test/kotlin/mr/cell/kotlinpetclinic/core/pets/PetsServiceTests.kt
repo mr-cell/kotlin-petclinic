@@ -71,8 +71,32 @@ class PetsServiceTests {
     }
 
     @Test
+    fun shouldUpdatePet() {
+        val newOwner = Owner("ownerId2", "Jane", "Eyre")
+        `when`(ownersRepository.findById(anyString())).thenReturn(newOwner)
+        `when`(petsRepository.findById(anyString())).then {
+            Pet(it.getArgument<String>(0), "Fido", 3, Owner("ownerId1", "John", "Doe"))
+        }
+        `when`(petsRepository.save(capture(petCaptor))).then { it.getArgument<Pet>(0) }
+        val updatePetCommand = UpdatePetCommand("Hunter", 5, "ownerId2")
+
+        val updatedPet = systemUnderTest.updatePet(ANY_ID, updatePetCommand)
+        val capturedPet = petCaptor.value
+        assertThat(updatedPet).isEqualTo(capturedPet)
+        with(capturedPet) {
+            assertThat(name).isEqualTo("Hunter")
+            assertThat(age).isEqualTo(5)
+            assertThat(owner).isEqualTo(newOwner)
+        }
+    }
+
+    @Test
     fun shouldDeletePet() {
         val pet = Pet(ANY_ID , "Fido", 3, Owner(ANY_ID, "John", "Doe"))
         `when`(petsRepository.findById(anyString())).thenReturn(pet)
+
+        val removedPet = systemUnderTest.removePet(ANY_ID)
+
+        assertThat(removedPet).isEqualTo(pet)
     }
 }

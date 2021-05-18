@@ -18,6 +18,7 @@ allprojects {
 subprojects {
     ext {
         set("archUnitVersion", "0.15.0")
+        set("mockitoKotlinVersion", "3.2.0")
     }
 
     apply {
