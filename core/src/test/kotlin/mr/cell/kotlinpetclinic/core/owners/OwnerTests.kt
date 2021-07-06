@@ -14,10 +14,10 @@ class OwnerTests {
     }
 
     @Test
-    fun shouldReplaceOnlyFirstName() {
+    fun shouldUpdateOnlyFirstName() {
         val owner = Owner("id", "firstName", "lastName")
 
-        val result = owner.replaceValues("firstName_replaced", null)
+        val result = owner.updateValues("firstName_replaced", null)
 
         assertThat(result.firstName).isEqualTo("firstName_replaced")
         assertThat(result.lastName).isEqualTo("lastName")
@@ -25,10 +25,10 @@ class OwnerTests {
     }
 
     @Test
-    fun shouldReplaceOnlyLastName() {
+    fun shouldUpdateOnlyLastName() {
         val owner = Owner("id", "firstName", "lastName")
 
-        val result = owner.replaceValues(null, "lastName_replaced")
+        val result = owner.updateValues(null, "lastName_replaced")
 
         assertThat(result.firstName).isEqualTo("firstName")
         assertThat(result.lastName).isEqualTo("lastName_replaced")

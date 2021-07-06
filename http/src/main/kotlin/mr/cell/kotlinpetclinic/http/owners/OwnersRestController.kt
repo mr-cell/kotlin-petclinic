@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest
 @RequestMapping("/owners")
 class OwnersRestController(private val owners: OwnersService, private val pets: PetsService) {
     companion object {
-        private val LOGGER: Logger = LoggerFactory.getLogger(OwnersRestController::class.java)
+        private val LOG: Logger = LoggerFactory.getLogger(OwnersRestController::class.java)
     }
 
     @GetMapping
@@ -52,7 +52,7 @@ class OwnersRestController(private val owners: OwnersService, private val pets: 
     @ExceptionHandler(OwnerNotFoundException::class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     fun handleOwnerNotFoundException(req: HttpServletRequest, ex: OwnerNotFoundException): HttpError {
-        LOGGER.error("Owner not found for id ${ex.id}", ex)
+        LOG.error("Owner not found for id ${ex.id}", ex)
         return HttpError(req.requestURI, ex.localizedMessage)
     }
 }

@@ -32,7 +32,7 @@ class PetsService(val pets: PetsRepository, val owners: OwnersRepository) {
     fun updatePet(id: String, updatePetCommand: UpdatePetCommand): Pet {
         val pet = getPetById(id)
         val owner: Owner? = updatePetCommand.ownerId?.let { owners.findById(it) }
-        val updatedPet = pet.replaceValues(updatePetCommand.name, updatePetCommand.age, owner)
+        val updatedPet = pet.updateValues(updatePetCommand.name, updatePetCommand.age, owner)
         pets.save(updatedPet)
         return updatedPet
     }

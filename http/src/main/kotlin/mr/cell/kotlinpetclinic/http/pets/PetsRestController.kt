@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest
 @RequestMapping("/pets")
 class PetsRestController(private val pets: PetsService) {
     companion object {
-        private val LOGGER: Logger = LoggerFactory.getLogger(PetsRestController::class.java)
+        private val LOG: Logger = LoggerFactory.getLogger(PetsRestController::class.java)
     }
 
     @GetMapping
@@ -42,14 +42,14 @@ class PetsRestController(private val pets: PetsService) {
         try {
             pets.removePet(id)
         } catch (ex: PetNotFoundException) {
-            LOGGER.warn("Could not remove pet with id {} - not found", id)
+            LOG.warn("Could not remove pet with id {} - not found", id)
         }
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(PetNotFoundException::class)
     fun handlePetNotFoundException(req: HttpServletRequest, ex: PetNotFoundException): HttpError {
-        LOGGER.error("Pet Not Found", ex)
+        LOG.error("Pet Not Found", ex)
         return HttpError(req.requestURI, ex.localizedMessage)
     }
 }

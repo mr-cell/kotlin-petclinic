@@ -16,7 +16,7 @@ class OwnersService(private val ownersRepository: OwnersRepository) {
 
     fun updateOwner(id: String, updateOwnerCommand: UpdateOwnerCommand): Owner {
         val owner = getOwnerById(id)
-        val updatedOwner = owner.replaceValues(updateOwnerCommand.firstName, updateOwnerCommand.lastName)
+        val updatedOwner = owner.updateValues(updateOwnerCommand.firstName, updateOwnerCommand.lastName)
         return ownersRepository.save(updatedOwner)
     }
 

@@ -12,26 +12,15 @@ class MongoPetsRepositoryAdapter(
     private val owners: MongoOwnersRepositoryAdapter
 ) : PetsRepository {
 
-    override fun findAll(): Collection<Pet> {
-        return pets.findAll().map { toPet(it) }
-    }
+    override fun findAll() = pets.findAll().map { toPet(it) }
 
-    override fun findById(id: String): Pet {
-        val pet = pets.findById(id)
-        if (pet.isPresent) {
-            return toPet(pet.get())
-        } else {
-            throw PetNotFoundException(id)
-        }
-    }
+    override fun findById(id: String) = pets.findById(id)
+        .map { toPet(it) }
+        .orElseThrow { PetNotFoundException(id) }!!
 
-    override fun findByOwnerId(id: String): Collection<Pet> {
-        return pets.findAllByOwnerId(id).map { toPet(it) }
-    }
+    override fun findByOwnerId(id: String) = pets.findAllByOwnerId(id).map { toPet(it) }
 
-    override fun delete(pet: Pet) {
-        pets.delete(PersistedPet.fromPet(pet))
-    }
+    override fun delete(pet: Pet) = pets.delete(PersistedPet.fromPet(pet))
 
     override fun save(pet: Pet): Pet {
         val persistedPet = PersistedPet.fromPet(pet)

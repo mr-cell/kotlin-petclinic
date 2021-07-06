@@ -22,7 +22,7 @@ class PetTests {
     fun shouldUpdateNameOnly() {
         val pet = Pet(PET_NAME, PET_AGE, PET_OWNER)
 
-        val updated = pet.replaceValues("Mittens", null, null)
+        val updated = pet.updateValues("Mittens", null, null)
 
         with(updated) {
             assertThat(name).isEqualTo("Mittens")
@@ -35,7 +35,7 @@ class PetTests {
     fun shouldUpdateAgeOnly() {
         val pet = Pet(PET_NAME, PET_AGE, PET_OWNER)
 
-        val updated = pet.replaceValues(null, 5, null)
+        val updated = pet.updateValues(null, 5, null)
 
         with(updated) {
             assertThat(name).isEqualTo(PET_NAME)
@@ -49,7 +49,7 @@ class PetTests {
         val pet = Pet(PET_NAME, PET_AGE, PET_OWNER)
         val newOwner = Owner("Adam", "West")
 
-        val updated = pet.replaceValues(null, null, newOwner)
+        val updated = pet.updateValues(null, null, newOwner)
 
         with(updated) {
             assertThat(name).isEqualTo(PET_NAME)
